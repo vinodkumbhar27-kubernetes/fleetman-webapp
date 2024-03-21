@@ -7,7 +7,7 @@ pipeline {
      // YOUR_DOCKERHUB_USERNAME (it doesn't matter if you don't have one)
      
      SERVICE_NAME = "fleetman-webapp"
-     REPOSITORY_TAG="${YOUR_DOCKERHUB_USERNAME}/${ORGANIZATION_NAME}-${SERVICE_NAME}:${BUILD_ID}"
+     REPOSITORY_TAG = "${YOUR_DOCKERHUB_USERNAME}/${ORGANIZATION_NAME}-${SERVICE_NAME}:${BUILD_ID}".toLowerCase()
    }
 
    stages {
@@ -25,7 +25,7 @@ pipeline {
 
       stage('Build and Push Image') {
          steps {
-           sh 'docker image build -t ${REPOSITORY_TAG} .'
+           sh "docker image build -t ${REPOSITORY_TAG} ."
          }
       }
 
@@ -36,4 +36,3 @@ pipeline {
       }
    }
 }
-
